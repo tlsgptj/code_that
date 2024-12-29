@@ -1,0 +1,10 @@
+.Board {
+    text-align: center;
+    width: 45%;
+    margin: 30px 15px; /* Adjusted margin to add space between the boards */
+    padding: 20px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    margin: 20px;
+    border-radius: 30px; /* Added border-radius to make the corners rounded */
+}

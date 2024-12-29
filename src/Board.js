@@ -1,8 +1,9 @@
 import Dice from './Dice';
+import './board.css';
 
 function Board({ name, color, num, sum, gameHistory }) {
   return (
-    <div>
+    <div className='Board'>
       <h1>{name}</h1>
       <Dice color={color} num={num} />
       <h2>총점</h2>

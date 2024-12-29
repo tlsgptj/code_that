@@ -17,13 +17,16 @@ function App() {
 
   const handleRollClick = () => {
     const nextNum = random(6);
+    const nextOtherNum = random(6);
+    // 내 상태 업데이트
     setNumber(nextNum);
     setSum(sum + nextNum);
-    gameHistory.push(nextNum);
-    setGameHistory(gameHistory);
-    setOtherNumber(nextNum);
-    setOtherSum(otherSum + nextNum);
-    setOtherHistory(gameHistory);
+    setGameHistory([...gameHistory, nextNum]);
+
+    // 상대 상태 업데이트
+    setOtherNumber(nextOtherNum);
+    setOtherSum(otherSum + nextOtherNum);
+    setOtherHistory([...otherGameHistory, nextOtherNum]);
   };
 
   const handleClearClick = () => {
@@ -37,9 +40,9 @@ function App() {
 
   return (
     <div className='App'>
-      <Button onClick={handleRollClick}>던지기</Button>
-      <Button onClick={handleClearClick}>처음부터</Button>
-      <div>
+      <Button className="App-button" color="blue" onClick={handleRollClick}>던지기</Button>
+      <Button className="App-button" color="red" onClick={handleClearClick}>처음부터</Button>
+      <div className='App-boards'> 
         <Board name="나" color="blue" num={number} sum={sum} gameHistory={gameHistory} />
         <Board name="상대" color="red" num={otherNumber} sum={otherSum} gameHistory={otherGameHistory} />
       </div>
