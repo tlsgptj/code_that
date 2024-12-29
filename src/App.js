@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Dice from './Dice';
+import Board from './Board';
 import Button from './Button';
 
 function random(n) {
@@ -8,21 +8,40 @@ function random(n) {
 
 function App() {
   const [number, setNumber] = useState(1);
+  const [sum, setSum] = useState(0);
+  const [gameHistory, setGameHistory] = useState([]);
+  const [otherNumber, setOtherNumber] = useState(1);
+  const [otherSum, setOtherSum] = useState(0);
+  const [otherGameHistory, setOtherHistory] = useState([]);
 
   const handleRollClick = () => {
     const nextNum = random(6);
     setNumber(nextNum);
+    setSum(sum + nextNum);
+    gameHistory.push(nextNum);
+    setGameHistory(gameHistory);
+    setOtherNumber(nextNum);
+    setOtherSum(otherSum + nextNum);
+    setOtherGameHistory(gameHistory);
   };
 
   const handleClearClick = () => {
     setNumber(1);
+    setSum(0); // 초기화
+    setGameHistory([]);
+    setOtherNumber(1);
+    setOtherSum(0);
+    setOtherHistory([]);
   }
 
   return (
     <div>
       <Button onClick={handleRollClick}>던지기</Button>
       <Button onClick={handleClearClick}>처음부터</Button>
-      <Dice color="red" num={number} />
+      <div>
+        <Board name="나" color="blue" num={num} sum={sum} gameHistory={gameHistory} />
+        <Board name="상대" color="red" num={otherNum} sum={otherSum} gameHistory={otherGameHistory} />
+      </div>
     </div>
   );
 }
