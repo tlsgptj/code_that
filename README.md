@@ -6,5 +6,5 @@
 # 완성
 ![alt text](image.png)
 
-#배포
+# 배포
 https://dicegame-umber.vercel.app/
