@@ -22,7 +22,7 @@ function App() {
     setGameHistory(gameHistory);
     setOtherNumber(nextNum);
     setOtherSum(otherSum + nextNum);
-    setOtherGameHistory(gameHistory);
+    setOtherHistory(gameHistory);
   };
 
   const handleClearClick = () => {
@@ -39,8 +39,8 @@ function App() {
       <Button onClick={handleRollClick}>던지기</Button>
       <Button onClick={handleClearClick}>처음부터</Button>
       <div>
-        <Board name="나" color="blue" num={num} sum={sum} gameHistory={gameHistory} />
-        <Board name="상대" color="red" num={otherNum} sum={otherSum} gameHistory={otherGameHistory} />
+        <Board name="나" color="blue" num={number} sum={sum} gameHistory={gameHistory} />
+        <Board name="상대" color="red" num={otherNumber} sum={otherSum} gameHistory={otherGameHistory} />
       </div>
     </div>
   );
